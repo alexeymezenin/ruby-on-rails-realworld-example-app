@@ -7,7 +7,7 @@ class AuthenticationController < ApplicationController
       @user_token = JsonWebToken.encode(user_id: @user.id)
       render json: @user.as_json.merge({ token: @user_token }), status: :ok
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      render json: { error: 'Unauthorized' }, status: :unauthorized
     end
   end
 end
