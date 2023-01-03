@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope :api do
     resources :users, only: [:show, :create, :update]
-    post 'users/login', to: 'users#login'
+    post 'auth/login', to: 'authentication#login'
   end
 end

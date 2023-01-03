@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show update ]
+  #before_action :set_user, only: %i[ show update ]
 
   def show
     render json: @user
@@ -22,10 +22,6 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
-
-  def login
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
