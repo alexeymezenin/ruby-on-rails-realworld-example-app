@@ -18,6 +18,12 @@ class ProfilesController < ApplicationController
     render_profile @current_user.does_follow_another_user(@user)
   end
 
+  private
+
+  def set_user_by_params
+    @user = User.find_by_username(params[:username])
+  end
+
   def render_profile(does_user_follow_another_user)
     render json: {
       profile: {
@@ -27,11 +33,5 @@ class ProfilesController < ApplicationController
         following: does_user_follow_another_user
       }
     }
-  end
-
-  private
-
-  def set_user_by_params
-    @user = User.find_by_username(params[:username])
   end
 end
