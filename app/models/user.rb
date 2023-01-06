@@ -19,6 +19,8 @@ class User < ApplicationRecord
     foreign_key: 'following_id',
     association_foreign_key: 'follower_id'
 
+  has_many :articles, dependent: :destroy
+
   def does_follow_another_user(user)
     following.include?(user)
   end
@@ -31,7 +33,7 @@ class User < ApplicationRecord
     following.delete(user)
   end
 
-  def as_json(options={})
-    super(root: 'user', only: [:email, :username, :bio, :image])
+  def as_json(options = {})
+    super(options.merge(only: [:email, :username, :bio, :image]))
   end
 end

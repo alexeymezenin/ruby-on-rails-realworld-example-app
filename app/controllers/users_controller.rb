@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   skip_before_action :authorize_request, only: [:create], raise: false
 
   def current
-    render json: @current_user
+    render json: @current_user.as_json(root: true)
   end
 
   def create
     @user = User.new(user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user.as_json(root: true), status: :created, location: @user
     else
       render json: { errors: @user.errors }, status: :unprocessable_entity
     end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def custom_update
     if @current_user.update(user_params)
-      render json: @current_user
+      render json: @current_user.as_json(root: true)
     else
       render json: @current_user.errors, status: :unprocessable_entity
     end

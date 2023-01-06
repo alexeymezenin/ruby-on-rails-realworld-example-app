@@ -3,6 +3,7 @@ class AuthenticationController < ApplicationController
 
   def login
     @user = User.find_by_email(params[:email])
+
     if @user&.authenticate(params[:password])
       @user_token = JsonWebToken.encode(user_id: @user.id)
       render json: @user.as_json.merge({ token: @user_token }), status: :ok

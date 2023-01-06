@@ -10,12 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_03_085447) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_054435) do
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.string "description"
+    t.text "body"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_articles_on_slug"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "articles_tags", id: false, force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "tag_id", null: false
+    t.index "\":article_id,\", \":tag_id\"", name: "index_articles_tags_on_:article_id,_and_:tag_id"
+  end
+
+  create_table "articles_users", id: false, force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "user_id", null: false
+    t.index ["article_id", "user_id"], name: "index_articles_users_on_article_id_and_user_id"
+  end
+
   create_table "followers", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
     t.index ["follower_id"], name: "index_followers_on_follower_id"
     t.index ["following_id"], name: "index_followers_on_following_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,4 +61,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_03_085447) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "articles", "users"
 end
