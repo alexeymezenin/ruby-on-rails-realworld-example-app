@@ -1,24 +1,36 @@
-# README
+### Ruby On Rails implementation of RealWorld app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app is part of the [RealWorld](https://github.com/gothinkster/realworld) project.
 
-Things you may want to cover:
+You might also check [Laravel version](https://github.com/alexeymezenin/laravel-realworld-example-app) on this app.
 
-* Ruby version
+See how the exact same Medium.com clone (called [Conduit](https://demo.realworld.io)) is built using different [frontends](https://codebase.show/projects/realworld?category=frontend) and [backends](https://codebase.show/projects/realworld?category=backend). Yes, you can mix and match them, because **they all adhere to the same [API spec](https://gothinkster.github.io/realworld/docs/specs/backend-specs/introduction)**
 
-* System dependencies
+### How to run the API
 
-* Configuration
+Make sure you have Ruby and Rails installed on your computer.
 
-* Database creation
+Clone the repo and enter the project folder
 
-* Database initialization
+```
+git clone https://github.com/alexeymezenin/ruby-on-rails-realworld-example-app
+cd ruby-on-rails-realworld-example-app
+```
 
-* How to run the test suite
+Execute migrations
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails db:migrate
+```
 
-* Deployment instructions
+Run the web server
 
-* ...
+```
+rails server
+```
+
+That's it. Now you can use the api, i.e.
+
+```
+http://127.0.0.1:3000/api/articles
+```
