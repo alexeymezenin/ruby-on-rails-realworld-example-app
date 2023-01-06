@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :tags
   resources :articles
   scope :api do
@@ -7,10 +8,13 @@ Rails.application.routes.draw do
     put 'user', to: 'users#custom_update'
     get 'user', to: 'users#current'
 
-    get 'articles/feed', to: 'articles#feed'
     post 'articles/:slug/favorite', to: 'articles#favorite'
     delete 'articles/:slug/favorite', to: 'articles#unfavorite'
-    resources :articles, param: :slug
+
+    resources :articles, param: :slug do
+      resources :comments, only: [:index, :create, :destroy]
+      get :feed, on: :collection
+    end
 
     scope :profiles do
       get ':username', to: 'profiles#show'

@@ -20,6 +20,7 @@ class User < ApplicationRecord
     association_foreign_key: 'follower_id'
 
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def does_follow_another_user(user)
     following.include?(user)

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: %i[show update destroy favorite unfavorite]
+  before_action :set_article!, only: %i[show update destroy favorite unfavorite]
 
   def index
     @articles = Article.order(created_at: :desc).includes(:user)
@@ -68,7 +68,7 @@ class ArticlesController < ApplicationController
 
   private
 
-  def set_article
+  def set_article!
     @article = Article.find_by_slug(params[:slug])
   end
 
