@@ -1,15 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  username: MyString
-  email: MyString
-  password: MyString
-  image: MyString
-  bio: MyText
-
-two:
-  username: MyString
-  email: MyString
-  password: MyString
-  image: MyString
-  bio: MyText
+  username: John
+  email: john@email.com
+  password_digest: secret
+  image: http://img.jpg
+  bio: Once upon a time
+  

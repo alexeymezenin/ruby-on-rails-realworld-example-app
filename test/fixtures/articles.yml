@@ -1,15 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  slug: MyString
-  description: MyString
-  body: MyText
+  title: Some article
+  slug: some-article
+  description: Some article description
+  body: Some text
   user: one
-
-two:
-  title: MyString
-  slug: MyString
-  description: MyString
-  body: MyText
-  user: two
