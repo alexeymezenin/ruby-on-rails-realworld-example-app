@@ -17,6 +17,12 @@ git clone https://github.com/alexeymezenin/ruby-on-rails-realworld-example-app
 cd ruby-on-rails-realworld-example-app
 ```
 
+Install gems
+
+```
+bundle install
+```
+
 Execute migrations
 
 ```
